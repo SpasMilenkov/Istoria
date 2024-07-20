@@ -1,0 +1,7 @@
+{
+  "extends": "@istoria/typescript-config/nest",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./",
+  }
+}

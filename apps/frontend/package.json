@@ -1,0 +1,22 @@
+{
+  "name": "@istoria/frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "clean": "rimraf ./output"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "consola": "^3.2.3",
+    "nuxt": "^3.12.3",
+    "rimraf": "^6.0.1"
+  }
+}

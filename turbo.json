@@ -1,17 +1,29 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["DISCORD_TOKEN", "CLIENT_ID", "GUILD_ID", "DATABASE_URL"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "dependsOn": ["^build"]
     },
     "lint": {
+      "cache": false,
       "dependsOn": ["^lint"]
+    },
+    "format": {
+      "cache": false,
+      "dependsOn": ["^format"]
     },
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "deploy": {
+      "cache": false,
+      "dependsOn": ["^deploy"]
+    },
+    "clean": {
+      "cache": false,
+      "dependsOn": ["^clean"]
     }
   }
 }

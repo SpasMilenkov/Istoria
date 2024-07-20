@@ -1,0 +1,38 @@
+{
+  "name": "@istoria/database",
+  "version": "1.0.0",
+  "main": "./dist/index",
+  "types": "./index.ts",
+  "scripts": {
+    "build": "tsc && cpx \"./prisma/generated/**/*\" ./dist/prisma/generated",
+    "dev": "tsc-watch --silent --onSuccess \"cpx \\\"./prisma/generated/**/*\\\" ./dist/prisma/generated\"",
+    "lint": "eslint *.ts --fix",
+    "format": "prettier --write *.ts",
+    "clean": "rimraf ./dist",
+    "postinstall": " npm run prisma:generate -- --schema ./prisma/schema.prisma",
+    "prisma:studio": "prisma studio",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:migrate:create-only": "npm run prisma:migrate -- --create-only",
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "prisma:generate": "prisma generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "-": "^0.0.1",
+    "@prisma/client": "^5.16.1",
+    "cpx2": "^7.0.1",
+    "D": "^1.0.0",
+    "prisma": "^5.16.1",
+    "rimraf": "^5.0.8",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^6.2.0"
+  },
+  "devDependencies": {
+    "@istoria/typescript-config": "*",
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.2"
+  }
+}

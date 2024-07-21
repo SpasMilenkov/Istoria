@@ -1,0 +1,7 @@
+{
+  "extends": "@istoria/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+  },
+  "exclude": ["dist", "node_modules"]
+}

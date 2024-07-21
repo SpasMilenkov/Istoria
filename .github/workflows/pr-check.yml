@@ -27,7 +27,7 @@ jobs:
 
       - name: Set output
         id: set-output
-        run: echo "{pr_invalid}={${{ env.pr_invalid }}}" >> $GITHUB_OUTPUT
+        run: echo "pr_invalid=${{ env.pr_invalid }}" >> $GITHUB_OUTPUT
 
       - name: Comment and close invalid PR
         if: env.pr_invalid == 'true'

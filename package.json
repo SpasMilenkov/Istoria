@@ -7,13 +7,14 @@
     "lint": "turbo lint",
     "format": "turbo format",
     "deploy": "turbo deploy",
-    "clean": "turbo clean"
+    "clean": "turbo clean",
+    "test": "turbo test"
   },
   "devDependencies": {
     "consola": "^3.2.3",
     "prettier": "^3.2.5",
     "tsc-watch": "^6.2.0",
-    "turbo": "^2.0.6",
+    "turbo": "^2.0.9",
     "typescript": "^5.4.5"
   },
   "engines": {

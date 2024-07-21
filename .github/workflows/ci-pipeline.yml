@@ -13,7 +13,7 @@ jobs:
 
   lint-and-test:
     needs: pr-check
-    if: ${{ needs.pr-check.outputs.pr_invalid == 'false' }}
+    if: ${{ needs.pr-check.result.pr_invalid == 'false' }}
     uses: ./.github/workflows/lint-and-test.yml
 
   build:

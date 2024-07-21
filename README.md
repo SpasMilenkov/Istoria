@@ -1,81 +1,118 @@
-# Turborepo starter
+# ![Istoria](./apps/frontend/public/images/pots.png)
 
-This is an official starter Turborepo.
+## Istoria: A D&D and Utility Discord Bot
 
-## Using this example
+Welcome to Istoria! Istoria is a versatile Discord bot designed for Dungeons & Dragons (D&D) enthusiasts. It allows players to form parties, embark on adventures, and enjoy a range of utility features to enhance their gaming experience.
 
-Run the following command:
+## 📑️ Table of Contents
 
-```sh
-npx create-turbo@latest
-```
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-## What's inside?
+## ✨️ Features
 
-This Turborepo includes the following packages/apps:
+- **Party Management**: Create and manage D&D parties.
+- **Adventure System**: Embark on adventures with your party.
+- **Utility Commands**: Various utility commands to enhance your Discord experience.
+- **Customizable**: Configure the bot to fit your server's needs.
 
-### Apps and Packages
+## 💡️ Tech Stack
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+Istoria is built using the following technologies:
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- [Nuxt](https://nuxtjs.org/) - Frontend Framework
+- [DiscordJS](https://discord.js.org/) - Discord Bot Framework
+- [NestJS](https://nestjs.com/) - Backend Framework
+- [Prisma](https://www.prisma.io/) - ORM for Database Management
+- [Docker](https://www.docker.com/) - Containerization Platform
 
-### Utilities
+## ⚙️ Installation
 
-This Turborepo has some additional tools already setup for you:
+### Prerequisites
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- Node.js (v14 or higher)
+- Docker (for containerization)
+- A Discord bot token
 
-### Build
+### Steps
 
-To build all apps and packages, run the following command:
+1. **Clone the Repository**
 
-```
-cd my-turborepo
-pnpm build
-```
+   ```sh
+   git clone git@github.com:SpasMilenkov/Istoria.git
+   cd istoria
+   ```
 
-### Develop
+2. **Install Dependencies**
 
-To develop all apps and packages, run the following command:
+   ```sh
+   npm install
+   ```
 
-```
-cd my-turborepo
-pnpm dev
-```
+3. **Setup Environment Variables**
+   Create a `.env` file in the root directory and add your environment variables. You can use `.env.template` as a template.
 
-### Remote Caching
+4. **Run with Docker**
+   ```sh
+   docker-compose up --build
+   ```
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## 🎊️ Usage
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+1. **Invite the Bot to Your Server**
+   Generate an invite link using the Discord Developer Portal and invite the bot to your server.
 
-```
-cd my-turborepo
-npx turbo login
-```
+2. **Interact with Istoria**
+   Use the various commands to create parties, start adventures, and more. You can find a list of commands by typing `!help` in your Discord server.
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 🆘️ Contributing
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+We welcome contributions from the community! Here’s how you can get involved:
 
-```
-npx turbo link
-```
+1. **Fork the Repository**
 
-## Useful Links
+2. **Create a Branch**
 
-Learn more about the power of Turborepo:
+   ```sh
+   git checkout -b feature/your-feature-name
+   ```
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+3. **Make Your Changes**
+
+4. **Commit Your Changes**
+
+   ```sh
+   git commit -m 'Add some feature'
+   ```
+
+5. **Push to the Branch**
+
+   ```sh
+   git push origin feature/your-feature-name
+   ```
+
+6. **Open a Pull Request**
+   Make sure your pull request is targeted at the `dev` branch.
+
+### 📃️ Code of Conduct
+
+Please adhere to the [Code of Conduct](CODE_OF_CONDUCT.md) when contributing to this project.
+
+## 📄️ License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
+## 📊️ Project Status
+
+![GitHub pull requests](https://img.shields.io/github/issues-pr/SpasMilenkov/Istoria)
+![GitHub issues](https://img.shields.io/github/issues/SpasMilenkov/Istoria)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/SpasMilenkov/Istoria)
+
+---
+
+Happy adventuring with Istoria!

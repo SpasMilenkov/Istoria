@@ -1,24 +1,35 @@
-name: Enforce PR Policy
+# .github/workflows/pr-check.yml
+name: PR Check
 
 on:
   workflow_call:
 
 jobs:
-  enforce-pr-policy:
+  pr-check:
     runs-on: ubuntu-latest
+    outputs:
+      pr_invalid: ${{ steps.set-output.outputs.pr_invalid }}
 
     steps:
-      - name: Check if PR is from dev
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify pull request source branch
         id: check_branch
         run: |
           if [[ "${{ github.event.pull_request.base.ref }}" == "main" && "${{ github.event.pull_request.head.ref }}" != "dev" ]]; then
-            echo "Invalid PR source branch" 
             echo "pr_invalid=true" >> $GITHUB_ENV
           else
             echo "pr_invalid=false" >> $GITHUB_ENV
           fi
 
-      - name: Comment and close PR
+      - name: Set output
+        id: set-output
+        run: echo "::set-output name=pr_invalid::${{ env.pr_invalid }}"
+
+      - name: Comment and close invalid PR
         if: env.pr_invalid == 'true'
         uses: actions/github-script@v6
         with:

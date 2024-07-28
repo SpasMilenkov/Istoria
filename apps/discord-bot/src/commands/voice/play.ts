@@ -1,6 +1,3 @@
-// CURRENTLY DEPRECATED UNTIL I FIGURE OUT HOW TO BYPASS THE 403
-// THIS IS JUST AN EXAMPLE PROBABLY WON'T EVEN MAKE IT TO THE FINAL BUILD
-
 import {
   StreamType,
   createAudioPlayer,
@@ -9,16 +6,21 @@ import {
   joinVoiceChannel,
   AudioPlayer,
   VoiceConnection,
-} from '@discordjs/voice'
+} from '@discordjs/voice';
 import {
   SlashCommandBuilder,
   ChatInputCommandInteraction,
   CacheType,
   EmbedBuilder,
-  Channel,
-} from 'discord.js'
-import ytdl from 'ytdl-core'
-import ytpl from 'ytpl'
+} from 'discord.js';
+import ytdl from 'ytdl-core';
+import ytpl from 'ytpl';
+
+/**
+ * A module that provides a slash command to play audio in a voice channel.
+ *
+ * @module PlayCommand
+ */
 
 export default {
   data: new SlashCommandBuilder()
@@ -30,14 +32,20 @@ export default {
         .setDescription('The URL of the audio or playlist to play')
         .setRequired(true)
     ),
+
+  /**
+   * Executes the play command.
+   *
+   * @param {ChatInputCommandInteraction<CacheType>} interaction - The command interaction.
+   */
   async execute(interaction: ChatInputCommandInteraction<CacheType>) {
-    const member: any = interaction.member
-    const channel = member?.voice.channel
+    const member: any = interaction.member;
+    const channel = member?.voice.channel;
     if (!channel) {
       return interaction.reply({
         content: 'You need to be in a voice channel to use this command!',
         ephemeral: true,
-      })
+      });
     }
 
     const connection: VoiceConnection =
@@ -46,38 +54,37 @@ export default {
         channelId: channel.id,
         guildId: channel.guild.id,
         adapterCreator: channel.guild.voiceAdapterCreator,
-      })
+      });
 
-    const player: AudioPlayer = createAudioPlayer()
+    const player: AudioPlayer = createAudioPlayer();
 
     // Audio player error handling
     player.on('error', (error) => {
-      console.error('AudioPlayer error:', error)
+      console.error('AudioPlayer error:', error);
       interaction.followUp({
         content: 'There was an error with the audio player.',
         ephemeral: true,
-      })
-      player.stop() // Stop the player on error
-      // connection.destroy() // Optionally destroy the connection
-    })
+      });
+      player.stop(); // Stop the player on error
+    });
 
-    connection.subscribe(player)
+    connection.subscribe(player);
 
-    const url = interaction.options.getString('url', true)
+    const url = interaction.options.getString('url', true);
     if (!ytdl.validateURL(url) && !ytpl.validateID(url)) {
       return interaction.reply({
         content: 'The provided URL is not a valid YouTube URL.',
         ephemeral: true,
-      })
+      });
     }
 
-    let videoUrls: string[] = []
-    let currentVideoIndex = 0
+    let videoUrls: string[] = [];
+    let currentVideoIndex = 0;
 
     try {
       if (ytpl.validateID(url)) {
-        const playlist = await ytpl(url, { limit: 100 })
-        videoUrls = playlist.items.map((item) => item.shortUrl)
+        const playlist = await ytpl(url, { limit: 100 });
+        videoUrls = playlist.items.map((item) => item.shortUrl);
 
         const embed = {
           color: 0x1db954, // Spotify green for a music vibe, adjust as needed
@@ -120,12 +127,12 @@ export default {
               'https://usob.tu-sofia.bg/img/TUSlogosimple.png',
           },
           timestamp: new Date().toISOString(),
-        }
+        };
 
-        await interaction.reply({ embeds: [embed] })
+        await interaction.reply({ embeds: [embed] });
       } else {
-        videoUrls = [url]
-        const video = await ytdl.getBasicInfo(url)
+        videoUrls = [url];
+        const video = await ytdl.getBasicInfo(url);
         const videoEmbed = new EmbedBuilder()
           .setColor('#ff0000')
           .setTitle('Now playing ' + video.videoDetails.title)
@@ -146,7 +153,7 @@ export default {
               return (current.width ?? 0) * (current.height ?? 0) >
                 (prev.width ?? 0) * (prev.height ?? 0)
                 ? current
-                : prev
+                : prev;
             }).url
           )
           .setTimestamp()
@@ -155,9 +162,9 @@ export default {
             iconURL:
               interaction.user.avatarURL() ??
               'https://usob.tu-sofia.bg/img/TUSlogosimple.png',
-          })
+          });
 
-        await interaction.reply({ embeds: [videoEmbed] })
+        await interaction.reply({ embeds: [videoEmbed] });
       }
 
       await playFromList(
@@ -166,19 +173,28 @@ export default {
         interaction,
         currentVideoIndex,
         connection
-      )
+      );
     } catch (error) {
-      console.error('Error playing audio:', error)
+      console.error('Error playing audio:', error);
       return interaction.reply({
         content:
           'There was an error playing the audio. Please check the URL and try again.',
         ephemeral: true,
-      })
+      });
     }
   },
-}
+};
 
-// Helper function to play audio from a list
+/**
+ * Helper function to play audio from a list.
+ *
+ * @param {AudioPlayer} player - The audio player instance.
+ * @param {string[]} videoUrls - List of video URLs to play.
+ * @param {ChatInputCommandInteraction<CacheType>} interaction - The command interaction.
+ * @param {number} startIndex - The index to start playing from.
+ * @param {VoiceConnection} connection - The voice connection instance.
+ * @returns {Promise<void>}
+ */
 async function playFromList(
   player: AudioPlayer,
   videoUrls: string[],
@@ -186,37 +202,44 @@ async function playFromList(
   startIndex: number,
   connection: VoiceConnection
 ): Promise<void> {
-  console.log(videoUrls)
+  console.log(videoUrls);
   for (let i = startIndex; i < videoUrls.length; i++) {
     try {
-      await playAudio(player, videoUrls[i], interaction)
+      await playAudio(player, videoUrls[i], interaction);
     } catch (error) {
-      console.error('Error playing video:', error)
+      console.error('Error playing video:', error);
       // Attempt reconnection and resume playback
-      console.log('Attempting to reconnect and resume playback...')
-      await reconnectAndResume(player, videoUrls, i, interaction, connection)
+      console.log('Attempting to reconnect and resume playback...');
+      await reconnectAndResume(player, videoUrls, i, interaction, connection);
     }
   }
 }
 
-// Helper function to play a single audio track
+/**
+ * Helper function to play a single audio track.
+ *
+ * @param {AudioPlayer} player - The audio player instance.
+ * @param {string} url - The URL of the video to play.
+ * @param {ChatInputCommandInteraction<CacheType>} interaction - The command interaction.
+ * @returns {Promise<void>}
+ */
 async function playAudio(
-  player: any, //Mismatch in the type when set to AudioPlayer, complains about the .once() call although it works?
+  player: any, // Mismatch in the type when set to AudioPlayer, complains about the .once() call although it works
   url: string,
   interaction: ChatInputCommandInteraction<CacheType>
 ): Promise<void> {
   return new Promise(async (resolve, reject) => {
     try {
-      const video = await ytdl.getBasicInfo(url)
+      const video = await ytdl.getBasicInfo(url);
       const stream = ytdl(url, {
         filter: 'audioonly',
         highWaterMark: 1 << 62, // Adjust if needed
         liveBuffer: 1 << 62,
         dlChunkSize: 0,
-      })
+      });
       const resource = createAudioResource(stream, {
         inputType: StreamType.Arbitrary,
-      })
+      });
       const videoEmbed = new EmbedBuilder()
         .setColor('#ff0000')
         .setTitle('Now playing ' + video.videoDetails.title)
@@ -237,7 +260,7 @@ async function playAudio(
             return (current.width ?? 0) * (current.height ?? 0) >
               (prev.width ?? 0) * (prev.height ?? 0)
               ? current
-              : prev
+              : prev;
           }).url
         )
         .setTimestamp()
@@ -246,28 +269,37 @@ async function playAudio(
           iconURL:
             interaction.user.avatarURL() ??
             'https://usob.tu-sofia.bg/img/TUSlogosimple.png',
-        })
-      const member: any = interaction.member
-      const channel = member?.voice.channel
-      channel.send({ embeds: [videoEmbed] })
-      player.play(resource)
+        });
+      const member: any = interaction.member;
+      const channel = member?.voice.channel;
+      channel.send({ embeds: [videoEmbed] });
+      player.play(resource);
 
       player.once('idle', () => {
-        resolve()
-      })
+        resolve();
+      });
 
       stream.once('error', (error) => {
-        console.error('Stream error:', error)
-        reject(error)
-      })
+        console.error('Stream error:', error);
+        reject(error);
+      });
     } catch (error) {
-      console.error('Error creating audio resource:', error)
-      reject(error)
+      console.error('Error creating audio resource:', error);
+      reject(error);
     }
-  })
+  });
 }
 
-// Helper function to handle reconnection and resume playback
+/**
+ * Helper function to handle reconnection and resume playback.
+ *
+ * @param {AudioPlayer} player - The audio player instance.
+ * @param {string[]} videoUrls - List of video URLs to play.
+ * @param {number} index - The index to resume playing from.
+ * @param {ChatInputCommandInteraction<CacheType>} interaction - The command interaction.
+ * @param {VoiceConnection} connection - The voice connection instance.
+ * @returns {Promise<void>}
+ */
 async function reconnectAndResume(
   player: AudioPlayer,
   videoUrls: string[],
@@ -277,26 +309,26 @@ async function reconnectAndResume(
 ) {
   // Reconnect to the voice channel if necessary
   if (!connection || connection.state.status !== 'ready') {
-    const member: any = interaction.member
-    const channel = member?.voice.channel
+    const member: any = interaction.member;
+    const channel = member?.voice.channel;
     if (!channel) {
       return interaction.followUp({
         content: 'You need to be in a voice channel to resume playback!',
         ephemeral: true,
-      })
+      });
     }
 
     connection = joinVoiceChannel({
       channelId: channel.id,
       guildId: channel.guild.id,
       adapterCreator: channel.guild.voiceAdapterCreator,
-    })
-    connection.subscribe(player)
+    });
+    connection.subscribe(player);
   }
 
   console.log(
-    'attempting to continue with the playlist, died at Index: ' + index
-  )
+    'Attempting to continue with the playlist, died at Index: ' + index
+  );
 
-  await playFromList(player, videoUrls, interaction, index, connection)
+  await playFromList(player, videoUrls, interaction, index, connection);
 }

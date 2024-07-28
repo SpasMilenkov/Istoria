@@ -1,4 +1,14 @@
-import { SlashCommandBuilder, ChatInputCommandInteraction } from 'discord.js'
+import {
+  SlashCommandBuilder,
+  ChatInputCommandInteraction,
+  GuildMember,
+} from 'discord.js';
+
+/**
+ * A module that provides a slash command to display information about a user in a Discord guild.
+ *
+ * @module UserInfoCommand
+ */
 
 export default {
   data: new SlashCommandBuilder()
@@ -10,22 +20,31 @@ export default {
         .setDescription('The user to get information about')
         .setRequired(false)
     ),
+
+  /**
+   * Executes the user info command.
+   *
+   * @param {ChatInputCommandInteraction} interaction - The command interaction.
+   */
   async execute(interaction: ChatInputCommandInteraction) {
-    const targetUser = interaction.options.getUser('target') || interaction.user
-    const targetMember = interaction.guild?.members.cache.get(targetUser.id)
+    const targetUser =
+      interaction.options.getUser('target') || interaction.user;
+    const targetMember = interaction.guild?.members.cache.get(
+      targetUser.id
+    ) as GuildMember;
 
     if (!targetMember) {
       await interaction.reply(
         'Unable to retrieve membership information for the specified user.'
-      )
-      return
+      );
+      return;
     }
 
     const memberColor =
       targetMember.displayHexColor === '#000000'
         ? '#0099ff'
-        : targetMember.displayHexColor
-    const highestRole = targetMember.roles.highest
+        : targetMember.displayHexColor;
+    const highestRole = targetMember.roles.highest;
     const embed = {
       color: parseInt(memberColor.replace('#', ''), 16),
       title: `${targetUser.tag} Information`,
@@ -91,7 +110,7 @@ export default {
         text: `Requested by ${interaction.user.tag}`,
         icon_url: interaction.user.avatarURL() || '',
       },
-    }
-    await interaction.reply({ embeds: [embed] })
+    };
+    await interaction.reply({ embeds: [embed] });
   },
-}
+};

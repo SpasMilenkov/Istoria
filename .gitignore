@@ -88,3 +88,6 @@ docker-compose.yaml
 
 # Database
 generated/
+
+# Docs
+docs/

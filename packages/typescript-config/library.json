@@ -1,0 +1,7 @@
+{
+  "extends": "./base.json",
+  "compileOptions": {
+    "target": "ES2015",
+    "module": "commonjs"
+  }
+}

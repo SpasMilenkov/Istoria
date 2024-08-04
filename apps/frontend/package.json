@@ -12,11 +12,16 @@
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.12.0",
-    "vue": "latest"
+    "vue": "latest",
+    "@istoria/commands": "*",
+    "@istoria/self-document": "*"
   },
   "devDependencies": {
+    "@iconify-json/uil": "^1.1.8",
+    "@nuxt/icon": "^1.3.1",
     "consola": "^3.2.3",
     "nuxt": "^3.12.3",
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "typescript": "^5.5.4"
   }
 }

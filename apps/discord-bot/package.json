@@ -4,11 +4,11 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
-    "deploy": "node dist/deploy-commands.js",
-    "clean": "rimraf ./dist"
+    "build": "tsup src/index.ts --minify",
+    "clean": "rimraf ./dist",
+    "docs": "typedoc --entryPointStrategy expand --out docs src/**"
   },
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
@@ -26,7 +26,12 @@
     "prettier": "^3.3.2",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
-    "tsc-watch": "^6.2.0"
+    "tsc-watch": "^6.2.0",
+    "tsup": "^8.2.3",
+    "tsx": "^4.16.2",
+    "typedoc": "^0.26.5",
+    "typedoc-material-theme": "^1.1.0",
+    "typescript": "^5.5.4"
   },
   "keywords": [],
   "author": "",

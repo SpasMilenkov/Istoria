@@ -1,0 +1,7 @@
+{
+  "plugin": ["typedoc-material-theme"],
+  "themeColor": "#252428",
+  "entryPoints": ["src/events", "src/interfaces", "src/sounds", "src/commands/utility"],
+  "entryPointStrategy": "expand",
+  "out": "docs"
+}

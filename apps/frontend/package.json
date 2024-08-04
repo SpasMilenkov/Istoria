@@ -2,7 +2,7 @@
   "name": "@istoria/frontend",
   "private": true,
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

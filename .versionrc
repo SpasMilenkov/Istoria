@@ -1,0 +1,69 @@
+{
+  "types": [
+    {
+      "type": "feat",
+      "section": "✨Features"
+    },
+    {
+      "type": "fix",
+      "section": "🔧 Bug Fixes"
+    },
+    {
+      "type": "chore",
+      "hidden": true
+    },
+    {
+      "type": "docs",
+      "hidden": true
+    },
+    {
+      "type": "style",
+      "hidden": true
+    },
+    {
+      "type": "refactor",
+      "hidden": true
+    },
+    {
+      "type": "perf",
+      "hidden": true
+    },
+    {
+      "type": "test",
+      "hidden": true
+    }
+  ],
+  "bumpFiles": [
+    {
+      "filename": "package.json",
+      "type": "json"
+    },
+    {
+      "filename": "package-lock.json",
+      "type": "json"
+    },
+    {
+      "filename": "./packages/database/package.json",
+      "type": "json"
+    },
+    {
+      "filename": "./packages/eslint-config/package.json",
+      "type": "json"
+    },
+    {
+      "filename": "./packages/typescript-config/package.json",
+      "type": "json"
+    },
+    {
+      "filename": "./apps/discord-bot/package.json",
+      "type": "json"
+    },
+    {
+      "filename": "./apps/backend/package.json"
+    },
+    {
+      "filename": "./apps/frontend/package.json",
+      "type": "json"
+    }
+  ]
+}

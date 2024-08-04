@@ -1,6 +1,6 @@
 {
   "name": "@istoria/database",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "./dist/index",
   "types": "./index.ts",
   "scripts": {

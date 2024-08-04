@@ -1,6 +1,7 @@
 {
   "name": "istoria",
   "private": true,
+  "version": "0.0.0",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -8,11 +9,13 @@
     "format": "turbo format",
     "deploy": "turbo deploy",
     "clean": "turbo clean",
-    "test": "turbo test"
+    "test": "turbo test",
+    "release": "standard-version"
   },
   "devDependencies": {
     "consola": "^3.2.3",
     "prettier": "^3.2.5",
+    "standard-version": "^9.5.0",
     "tsc-watch": "^6.2.0",
     "turbo": "^2.0.9",
     "typescript": "^5.4.5"

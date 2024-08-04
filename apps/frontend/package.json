@@ -2,6 +2,7 @@
   "name": "@istoria/frontend",
   "private": true,
   "type": "module",
+  "version": "0.0.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -12,9 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.12.0",
-    "vue": "latest",
-    "@istoria/commands": "*",
-    "@istoria/self-document": "*"
+    "vue": "latest"
   },
   "devDependencies": {
     "@iconify-json/uil": "^1.1.8",

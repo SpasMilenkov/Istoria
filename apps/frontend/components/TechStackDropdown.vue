@@ -7,8 +7,8 @@
                 <Icon :name="tech.logo" size="40"></Icon>
             </div>
             <span
-                class="text-sm font-semibold text-secondary-600 group-hover:text-primary transition-colors duration-300">{{
-                    tech.name }}</span>
+                class="text-sm font-semibold text-secondary-50 group-hover:text-primary transition-colors duration-300">{{
+                tech.name }}</span>
         </div>
     </div>
 </template>

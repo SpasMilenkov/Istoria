@@ -1,6 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": ["DISCORD_TOKEN", "CLIENT_ID", "GUILD_ID", "POSTGRES_URL"],
+  "ui": "tui",
   "tasks": {
     "build": {
       "dependsOn": ["^build"]

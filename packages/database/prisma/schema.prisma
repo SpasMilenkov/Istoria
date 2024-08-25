@@ -9,6 +9,184 @@ datasource db {
 }
 
 model User {
-  id   String @id @default(uuid())
-  name String
+  id         String      @id @default(uuid())
+  name       String
+  email      String      @unique
+  password   String
+  characters Character[]
+}
+
+enum Attribute {
+  LIGHT_ATTRIBUTE
+  DARK_ATTRIBUTE
+  FIRE_ATTRIBUTE
+  WATER_ATTRIBUTE
+  EARTH_ATTRIBUTE
+  WIND_ATTRIBUTE
+}
+
+enum Rarity {
+  COMMON
+  UNCOMMON
+  RARE
+  EPIC
+  LEGENDARY
+  MYTHICAL
+  HYPOTHETICAL
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+  EXTREMELY_HARD
+  HEROIC_DEED
+  WORLD_ENDING_THREAT
+  BEYOND_HUMAN_COMPREHENSION
+}
+
+enum Severity {
+  MILD
+  MEDIUM
+  HIGH
+  EXTREME
+}
+
+model Weapon {
+  id            String      @id @default(uuid())
+  name          String
+  attributes    Attribute[]
+  rarity        Rarity
+  baseAttack    Int
+  defense       Int
+  speed         Int
+  agility       Int
+  requiredLevel Int
+  origin        String
+  creator       Character?  @relation(fields: [creatorId], references: [id])
+  creatorId     String?     @unique
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Character {
+  id               String           @id @default(uuid())
+  name             String
+  age              Int
+  race             String
+  class            String
+  specialization   String
+  hp               Int
+  mana             Int
+  stamina          Int
+  poise            Int
+  buffs            Buff[]           @relation("CharacterBuffs")
+  debuffs          Debuff[]         @relation("CharacterDebuffs")
+  blessings        Blessing[]       @relation("CharacterBlessings")
+  curses           Curse[]          @relation("CharacterCurses")
+  traits           Trait[]          @relation("CharacterTraits")
+  inventory        Inventory        @relation(fields: [inventoryId], references: [id])
+  inventoryId      String           @unique
+  currentParty     Party?           @relation(fields: [partyId], references: [id])
+  partyId          String? // Optional, can be null if not in a party
+  titles           String[]
+  characterTraits  CharacterTrait[]
+  characterTraitId Int
+  craftedWeapons   Weapon[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  User             User?            @relation(fields: [userId], references: [id])
+  userId           String?
+}
+
+model Debuff {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  effect      String
+  severity    Severity
+  rarity      Rarity
+  difficulty  Difficulty
+  obtain      String
+  remove      String?
+  characters  Character[] @relation("CharacterDebuffs")
+}
+
+model Buff {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  effect      String
+  severity    Severity
+  rarity      Rarity
+  difficulty  Difficulty
+  obtain      String
+  characters  Character[] @relation("CharacterBuffs")
+}
+
+model Curse {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  effect      String
+  severity    Severity
+  rarity      Rarity
+  difficulty  Difficulty
+  obtain      String
+  remove      String?
+  characters  Character[] @relation("CharacterCurses")
+}
+
+model Blessing {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  effect      String
+  severity    Severity
+  rarity      Rarity
+  difficulty  Difficulty
+  obtain      String
+  characters  Character[] @relation("CharacterBlessings")
+}
+
+model Trait {
+  id          String      @id @default(uuid())
+  name        String
+  description String
+  effect      String
+  severity    Severity
+  rarity      Rarity
+  difficulty  Difficulty
+  obtain      String
+  remove      String?
+  characters  Character[] @relation("CharacterTraits")
+}
+
+model Inventory {
+  id               String     @id @default(uuid())
+  equippedWeapon   Json
+  equippedArmor    Json
+  equippedTrinkets Json
+  inventoryItems   Json
+  character        Character?
+}
+
+model CharacterTrait {
+  id           String      @id @default(uuid())
+  strength     Int
+  agility      Int
+  constitution Int
+  intelligence Int
+  empathy      Int
+  willpower    Int
+  awareness    Int
+  Character    Character[]
+}
+
+model Party {
+  id        String      @id @default(uuid())
+  partyName String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  members   Character[]
 }

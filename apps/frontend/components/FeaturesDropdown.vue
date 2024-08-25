@@ -1,10 +1,15 @@
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div v-for="feature in features" :key="feature.title"
-            class="bg-secondary-100 dark:bg-neutral-900  p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-2 border-transparent hover:border-primary">
-            <div class="text-4xl mb-4 text-primary">{{ feature.icon }}</div>
-            <h3 class="text-xl font-bold mb-2 text-secondary-600 " >{{ feature.title }}</h3>
-            <p class="text-secondary dark:text-secondary-50">{{ feature.description }}</p>
+        <div v-for="feature in features" :key="feature.title" class="relative group overflow-hidden rounded-lg">
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-primary-500 via-yellow-500 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out animate-spin">
+            </div>
+            <div
+                class="relative bg-secondary-100 md:min-h-60 dark:bg-neutral-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 m-0.5 z-10">
+                <div class="text-4xl mb-4 text-primary">{{ feature.icon }}</div>
+                <h3 class="text-xl font-bold mb-2 text-secondary-600">{{ feature.title }}</h3>
+                <p class="text-secondary dark:text-secondary-50">{{ feature.description }}</p>
+            </div>
         </div>
     </div>
 </template>
@@ -33,3 +38,22 @@ const features = [
     }
 ];
 </script>
+
+
+<style scoped>
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 5s linear infinite;
+}
+</style>

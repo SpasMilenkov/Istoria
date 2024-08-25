@@ -11,7 +11,7 @@
             </li>
         </ol>
         <div class="mt-8">
-            <h3 class="text-xl font-bold mb-2 text-secondary-600">Basic Bot Commands</h3>
+            <h3 class="text-xl font-bold mb-2 text-secondary-50">Basic Bot Commands</h3>
             <div class="bg-secondary-dark text-secondary-100 p-4 rounded-lg overflow-hidden">
                 <!-- Replace this with an actual GIF or video demonstrating bot commands -->
                 <div class="w-full h-40 bg-secondary flex items-center justify-center">

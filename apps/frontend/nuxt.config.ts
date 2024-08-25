@@ -7,6 +7,7 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+
   icon: {
     size: '28px', // default <Icon> size applied
     class: 'icon', // default <Icon> class applied
@@ -15,5 +16,7 @@ export default defineNuxtConfig({
       nuxt: 'logos:nuxt-icon',
     },
   },
+
   modules: ['@nuxtjs/tailwindcss', '@nuxt/icon'],
+  compatibilityDate: '2024-08-25',
 });

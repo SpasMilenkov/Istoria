@@ -102,9 +102,7 @@ const scrollTo = (section: string, offset = 90) => {
             behavior: 'smooth'
         });
     }
-    console.log(mobileMenuOpen.value)
     if (mobileMenuOpen.value) {
-        console.log('toggling menu')
         toggleMobileMenu()
 
     }

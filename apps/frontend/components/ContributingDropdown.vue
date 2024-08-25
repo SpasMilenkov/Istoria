@@ -4,11 +4,11 @@
             <li v-for="(step, index) in contributingSteps" :key="index" class="flex items-start">
                 <span class="mr-2">{{ index + 1 }}.</span>
                 <div>
-                    <p class="font-semibold text-secondary-600">{{ step.title }}</p>
+                    <p class="font-semibold text-secondary-50">{{ step.title }}</p>
                     <p class="text-secondary dark:text-secondary-50 mt-1">{{ step.description }}</p>
                     <div v-if="step.code" class="mt-2 relative">
                         <pre class="bg-secondary-dark text-secondary-100 p-4 rounded-lg overflow-x-auto"><code>{{
-                            step.code }}</code></pre>
+                                step.code }}</code></pre>
                         <button @click="copyToClipboard(step.code)"
                             class="absolute top-2 right-2 bg-primary text-white px-2 py-1 rounded text-sm hover:bg-primary-light transition-colors duration-300">
                             Copy

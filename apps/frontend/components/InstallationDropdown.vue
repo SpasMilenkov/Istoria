@@ -1,7 +1,7 @@
 <template>
     <div class="space-y-6">
         <div>
-            <h3 class="text-xl font-bold mb-2 text-secondary-600">Prerequisites</h3>
+            <h3 class="text-xl font-bold mb-2 text-secondary-50">Prerequisites</h3>
             <ul class="list-none space-y-2">
                 <li v-for="item in prerequisites" :key="item" class="flex items-center">
                     <svg class="w-5 h-5 mr-2 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -13,7 +13,7 @@
             </ul>
         </div>
         <div>
-            <h3 class="text-xl font-bold mb-2 text-secondary-600">Installation Steps</h3>
+            <h3 class="text-xl font-bold mb-2 text-secondary-50">Installation Steps</h3>
             <ol class="list-decimal list-inside space-y-4">
                 <li v-for="(step, index) in installationSteps" :key="index">
                     <p class="mb-2">{{ step.instruction }}</p>

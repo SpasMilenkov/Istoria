@@ -8,6 +8,12 @@ export default defineNuxtConfig({
     },
   },
 
+  runtimeConfig: {
+    public: {
+      api: process.env.NUXT_BACKEND_URL,
+    },
+  },
+
   icon: {
     size: '28px', // default <Icon> size applied
     class: 'icon', // default <Icon> class applied
@@ -17,6 +23,24 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/icon'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxt/icon',
+    [
+      '@vee-validate/nuxt',
+      {
+        // disable or enable auto imports
+        autoImports: true,
+        // Use different names for components
+        componentNames: {
+          Form: 'VeeForm',
+          Field: 'VeeField',
+          FieldArray: 'VeeFieldArray',
+          ErrorMessage: 'VeeErrorMessage',
+        },
+      },
+    ],
+  ],
+
   compatibilityDate: '2024-08-25',
 });

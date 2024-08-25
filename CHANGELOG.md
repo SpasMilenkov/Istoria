@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/SpasMilenkov/Istoria/compare/v0.2.0...v0.3.0) (2024-08-25)
+
+
+### ✨Features
+
+* add CORS policy ([74c8e07](https://github.com/SpasMilenkov/Istoria/commit/74c8e07b1ee9a700c22f9af6d2918afc6b7217a4))
+* add runtime config, add veevalidate module ([57e5484](https://github.com/SpasMilenkov/Istoria/commit/57e5484a267885e038d15f1bf08ab44d14af9385))
+* add useAuth composable ([1dc2c0e](https://github.com/SpasMilenkov/Istoria/commit/1dc2c0efa3b7d9a33df022664de7c2edf49e56d9))
+* add user DTOs ([a99d1f5](https://github.com/SpasMilenkov/Istoria/commit/a99d1f5fc041c922d88ffbb7d920055ac8220ed7))
+* add user module ([6c4a96a](https://github.com/SpasMilenkov/Istoria/commit/6c4a96a4ba440f9910f2ad521e94101f9d88b35b))
+* implement veev validate, send requests for login and register to the nest backend ([47f4f6b](https://github.com/SpasMilenkov/Istoria/commit/47f4f6bd919a9bc08294d184457e6964449320ce))
+
+
+### 🔧 Bug Fixes
+
+* database service part not matching in test pipeline ([8ed6191](https://github.com/SpasMilenkov/Istoria/commit/8ed6191ae81f2db56a04c7d7d9949fedc9e84289))
+* fix testing pipeline ([d6058f3](https://github.com/SpasMilenkov/Istoria/commit/d6058f3fd43b7065c3cda743f61d661eb30f9981))
+
 ## 0.2.0 (2024-08-25)
 
 

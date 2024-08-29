@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/SpasMilenkov/Istoria/compare/v0.2.0...v0.4.0) (2024-08-29)
+
+
+### ✨Features
+
+* add armor and base item ([c9bf157](https://github.com/SpasMilenkov/Istoria/commit/c9bf15780817004e632cc7593e12910859e98e8d))
+* add armor module ([fbd7400](https://github.com/SpasMilenkov/Istoria/commit/fbd7400c875128e27fbfc12bf2f4493190c76e22))
+* add armor set CRUD operations to armor module ([c896dbf](https://github.com/SpasMilenkov/Istoria/commit/c896dbf49e3e8bc567c5c6a424017f2c1eedea91))
+* add base item, add armor, add armor set, add weight enum ([d3263cc](https://github.com/SpasMilenkov/Istoria/commit/d3263cca01685f86e6fdc8a3561e839ad1a86815))
+* add CORS policy ([aa6f99b](https://github.com/SpasMilenkov/Istoria/commit/aa6f99b0682c02044261938ff6f3d4681fddd8c0))
+* add item durability ([87277a2](https://github.com/SpasMilenkov/Istoria/commit/87277a2e2e4cc3b4b7d1c6c9bd28ce2a866de856))
+* add runtime config, add veevalidate module ([91cd477](https://github.com/SpasMilenkov/Istoria/commit/91cd4776f3c92cf7261ba2558be8d837cf5220dc))
+* add useAuth composable ([85a5d29](https://github.com/SpasMilenkov/Istoria/commit/85a5d290d35109e868c99d76c25f8181af2768cf))
+* add user DTOs ([8c67074](https://github.com/SpasMilenkov/Istoria/commit/8c670749562d7fbcb094925a373c9a6808d653b8))
+* add user module ([fc11d0a](https://github.com/SpasMilenkov/Istoria/commit/fc11d0ad6239233c3841a62a9e40fa22421cfcb0))
+* implement veev validate, send requests for login and register to the nest backend ([2769e06](https://github.com/SpasMilenkov/Istoria/commit/2769e062b71837da039208a98c9e8309715db0a0))
+
+
+### 🔧 Bug Fixes
+
+* database module import part, armor module tests ([c823160](https://github.com/SpasMilenkov/Istoria/commit/c823160bfcd9e500effff9a63354be3a953883ac))
+* database service part not matching in test pipeline ([d622670](https://github.com/SpasMilenkov/Istoria/commit/d622670c4c8489fd1e8554330d434952a4aec556))
+* fix testing pipeline ([afb1c11](https://github.com/SpasMilenkov/Istoria/commit/afb1c11414523b1bb03dd228905a7547159ee556))
+
 ## [0.3.0](https://github.com/SpasMilenkov/Istoria/compare/v0.2.0...v0.3.0) (2024-08-25)
 
 

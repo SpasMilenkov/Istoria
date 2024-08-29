@@ -52,12 +52,18 @@ enum Severity {
   EXTREME
 }
 
-model Weapon {
+enum Weight {
+  LIGHT
+  MEDIUM
+  HEAVY
+  SUPER_HEAVY
+}
+
+model Item {
   id            String      @id @default(uuid())
   name          String
   attributes    Attribute[]
   rarity        Rarity
-  baseAttack    Int
   defense       Int
   speed         Int
   agility       Int
@@ -65,8 +71,42 @@ model Weapon {
   origin        String
   creator       Character?  @relation(fields: [creatorId], references: [id])
   creatorId     String?     @unique
+  weight        Weight
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
+  durability    Int
+  // Discriminator field to distinguish between Armor and Weapon
+  type   String
+  Weapon Weapon[]
+  Armor  Armor[]
+}
+
+model Weapon {
+  id          String     @id @default(uuid())
+  baseAttack  Int
+  // Relation to the shared fields in Item
+  item        Item       @relation(fields: [id], references: [id])
+  Character   Character? @relation(fields: [characterId], references: [id])
+  characterId String?
+}
+
+model Armor {
+  id          String     @id @default(uuid())
+  armorSetId  String
+  ArmorSet    ArmorSet   @relation(fields: [armorSetId], references: [id])
+  // Relation to the shared fields in Item
+  item        Item       @relation(fields: [id], references: [id])
+  Character   Character? @relation(fields: [characterId], references: [id])
+  characterId String?
+}
+
+model ArmorSet {
+  id       String   @id @default(uuid())
+  name     String
+  SetBonus Trait[]
+  Buffs    Buff[]
+  Debuffs  Debuff[]
+  Armor    Armor[]
 }
 
 model Character {
@@ -95,8 +135,10 @@ model Character {
   craftedWeapons   Weapon[]
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
-  User             User?            @relation(fields: [userId], references: [id])
-  userId           String?
+  User             User             @relation(fields: [userId], references: [id])
+  userId           String
+  Armor            Armor[]
+  Item             Item?
 }
 
 model Debuff {
@@ -110,6 +152,7 @@ model Debuff {
   obtain      String
   remove      String?
   characters  Character[] @relation("CharacterDebuffs")
+  ArmorSet    ArmorSet[]
 }
 
 model Buff {
@@ -122,6 +165,7 @@ model Buff {
   difficulty  Difficulty
   obtain      String
   characters  Character[] @relation("CharacterBuffs")
+  ArmorSet    ArmorSet[]
 }
 
 model Curse {
@@ -160,6 +204,7 @@ model Trait {
   obtain      String
   remove      String?
   characters  Character[] @relation("CharacterTraits")
+  ArmorSet    ArmorSet[]
 }
 
 model Inventory {

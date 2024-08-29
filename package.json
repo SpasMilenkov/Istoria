@@ -1,7 +1,7 @@
 {
   "name": "istoria",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -17,7 +17,7 @@
     "prettier": "^3.2.5",
     "standard-version": "^9.5.0",
     "tsc-watch": "^6.2.0",
-    "turbo": "^2.0.9",
+    "turbo": "^2.1.0",
     "typescript": "^5.4.5"
   },
   "engines": {

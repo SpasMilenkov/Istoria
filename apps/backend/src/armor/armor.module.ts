@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ArmorService } from './armor.service';
 import { ArmorController } from './armor.controller';
-import { DatabaseModule } from 'src/database/database.module';
+import { DatabaseModule } from '../database/database.module';
 import { ArmorSetController } from './armor-set.controller';
 import { ArmorSetService } from './armor-set.service';
 

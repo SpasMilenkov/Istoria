@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateArmorDto } from './dto/create-armor.dto';
 import { UpdateArmorDto } from './dto/update-armor.dto';
 import { ArmorResponseDto } from './dto/get-armor.dto';
-import { DatabaseService } from 'src/database/database.service';
+import { DatabaseService } from '../database/database.service';
 
 @Injectable()
 export class ArmorService {

@@ -48,6 +48,7 @@ describe('ArmorController', () => {
         origin: 'Test Kingdom',
         weight: Weight.LIGHT,
         armorSetId: '00000000-0000-0000-0000-000000000000',
+        durability: 22,
       };
 
       const expectedResult: ArmorResponseDto = {
@@ -79,6 +80,7 @@ describe('ArmorController', () => {
           weight: Weight.LIGHT,
           armorSetId: '00000000-0000-0000-0000-000000000001',
           itemId: '87654321-4321-4321-4321-210987654321',
+          durability: 22,
         },
         {
           id: '23456789-2345-2345-2345-234567890123',
@@ -93,6 +95,7 @@ describe('ArmorController', () => {
           weight: Weight.HEAVY,
           armorSetId: '00000000-0000-0000-0000-000000000002',
           itemId: '76543210-3210-3210-3210-109876543210',
+          durability: 22,
         },
       ];
 
@@ -118,6 +121,7 @@ describe('ArmorController', () => {
         weight: Weight.LIGHT,
         armorSetId: '00000000-0000-0000-0000-000000000000',
         itemId: '87654321-4321-4321-4321-210987654321',
+        durability: 22,
       };
 
       jest.spyOn(service, 'findOne').mockResolvedValue(expectedResult);
@@ -151,6 +155,7 @@ describe('ArmorController', () => {
         weight: Weight.LIGHT,
         armorSetId: '00000000-0000-0000-0000-000000000000',
         itemId: '87654321-4321-4321-4321-210987654321',
+        durability: 22,
       };
 
       jest.spyOn(service, 'update').mockResolvedValue(expectedResult);

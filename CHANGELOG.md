@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/SpasMilenkov/Istoria/compare/v0.2.0...v0.5.0) (2024-08-31)
+
+
+### 🔧 Bug Fixes
+
+* database module import part, armor module tests ([baafb1f](https://github.com/SpasMilenkov/Istoria/commit/baafb1f032507bbaac11726944047656fa933210))
+* database service part not matching in test pipeline ([d622670](https://github.com/SpasMilenkov/Istoria/commit/d622670c4c8489fd1e8554330d434952a4aec556))
+* fix testing pipeline ([afb1c11](https://github.com/SpasMilenkov/Istoria/commit/afb1c11414523b1bb03dd228905a7547159ee556))
+
+
+### ✨Features
+
+* add armor and base item ([2f842af](https://github.com/SpasMilenkov/Istoria/commit/2f842afd167ab369dae3443b5080fe34d9cfa256))
+* add armor module ([190b1d1](https://github.com/SpasMilenkov/Istoria/commit/190b1d1d5d066c090b0ad9be2e56ef8a7f1f01d6))
+* add armor set CRUD operations to armor module ([4f50846](https://github.com/SpasMilenkov/Istoria/commit/4f508461220aaafffc5496061b59cf461c119309))
+* add base item, add armor, add armor set, add weight enum ([d6ea8cf](https://github.com/SpasMilenkov/Istoria/commit/d6ea8cf073c7a3fe69caf95bb571e5f563bce129))
+* add CORS policy ([aa6f99b](https://github.com/SpasMilenkov/Istoria/commit/aa6f99b0682c02044261938ff6f3d4681fddd8c0))
+* add error messages in class validator ([b78cae6](https://github.com/SpasMilenkov/Istoria/commit/b78cae6483b68bec5384673a9b9dacde67a23413))
+* add item durability ([f1ec679](https://github.com/SpasMilenkov/Istoria/commit/f1ec679c37453e422e043d63732a7d2a1407beaa))
+* add runtime config, add veevalidate module ([91cd477](https://github.com/SpasMilenkov/Istoria/commit/91cd4776f3c92cf7261ba2558be8d837cf5220dc))
+* add useAuth composable ([85a5d29](https://github.com/SpasMilenkov/Istoria/commit/85a5d290d35109e868c99d76c25f8181af2768cf))
+* add user DTOs ([8c67074](https://github.com/SpasMilenkov/Istoria/commit/8c670749562d7fbcb094925a373c9a6808d653b8))
+* add user module ([fc11d0a](https://github.com/SpasMilenkov/Istoria/commit/fc11d0ad6239233c3841a62a9e40fa22421cfcb0))
+* add weapon module ([c2fa171](https://github.com/SpasMilenkov/Istoria/commit/c2fa17171c95493fdeb9931c5966ce97f4496143))
+* implement veev validate, send requests for login and register to the nest backend ([2769e06](https://github.com/SpasMilenkov/Istoria/commit/2769e062b71837da039208a98c9e8309715db0a0))
+
 ## [0.4.0](https://github.com/SpasMilenkov/Istoria/compare/v0.2.0...v0.4.0) (2024-08-29)
 
 

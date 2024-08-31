@@ -1,14 +1,12 @@
-import {
-  IsString,
-  IsInt,
-  IsUUID,
-  IsEnum,
-  IsArray,
-  IsPositive,
-} from 'class-validator';
 import { Attribute, Rarity, Weight } from '@istoria/database';
+import { IsArray, IsEnum, IsInt, IsPositive, IsString } from 'class-validator';
 
-export class CreateArmorDto {
+export class CreateWeaponDto {
+  // Weapon-specific fields
+  @IsInt({ message: 'Base attack must be an integer.' })
+  baseAttack: number;
+
+  // Item fields
   @IsString({ message: 'Name must be a string.' })
   name: string;
 
@@ -40,9 +38,6 @@ export class CreateArmorDto {
 
   @IsEnum(Weight, { message: 'Weight must be a valid Weight.' })
   weight: Weight;
-
-  @IsUUID('4', { message: 'Armor set ID must be a valid UUID.' })
-  armorSetId: string;
 
   @IsInt({ message: 'Durability must be an integer.' })
   durability: number;

@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/SpasMilenkov/Istoria/compare/v0.5.0...v0.6.0) (2024-09-08)
+
+
+### 🔧 Bug Fixes
+
+* deleting equipped weapon entry upon unequipping weapon ([f1ade67](https://github.com/SpasMilenkov/Istoria/commit/f1ade67aa80925c2f3c304b1619546f23e803f54))
+* fix broken import ([a8e759c](https://github.com/SpasMilenkov/Istoria/commit/a8e759c0ff8c29ae5a140875644fbdedab1e970b))
+
+
+### ✨Features
+
+* add armor pieces types ([168fcdc](https://github.com/SpasMilenkov/Istoria/commit/168fcdcbdceaf22e41c169a2312b119ba27085b0))
+* add cascade delete for inventory items ([7310df6](https://github.com/SpasMilenkov/Istoria/commit/7310df68be1592ab9febdea123dc37c8faff8366))
+* add custom armor exceptions ([ecddb25](https://github.com/SpasMilenkov/Istoria/commit/ecddb259fa3a96cdb45a1c0b9b59945783632e49))
+* add custom weapon exceptions ([e9457a7](https://github.com/SpasMilenkov/Istoria/commit/e9457a7b62d67793b16733e05c3f13701b0fd6ff))
+* add inventory item table ([10eab61](https://github.com/SpasMilenkov/Istoria/commit/10eab61849d7e61ef1e9605fa08221364fd96e9d))
+* add inventory module ([767bc53](https://github.com/SpasMilenkov/Istoria/commit/767bc53edf4e192127e770ee64ddbe52549a3c0c))
+* add istoria splash art ([700eec8](https://github.com/SpasMilenkov/Istoria/commit/700eec89565e09b9f13e7551db7fec696d90945a))
+* add typedoc ([41c6152](https://github.com/SpasMilenkov/Istoria/commit/41c615255ced89c2f553a9b346dc0c6d57630051))
+* add typedoc config ([373d6bc](https://github.com/SpasMilenkov/Istoria/commit/373d6bcf76a3758122ea7ea6786a083508f8091f))
+* clean up inventory item relation with inventory ([50ac67a](https://github.com/SpasMilenkov/Istoria/commit/50ac67a008d70385c3229984a5f14ece72b36f84))
+* overhaul inventory relations ([5ffc383](https://github.com/SpasMilenkov/Istoria/commit/5ffc3839ad24a8216ff82c953e53c936b8d58c57))
+* overhaul the equipped weapon relation to the inventory, introduce equipped weapon table ([d13b00b](https://github.com/SpasMilenkov/Istoria/commit/d13b00beb61b9b0a06e20895b1f67b32a5739733))
+* register inventory module ([6607940](https://github.com/SpasMilenkov/Istoria/commit/66079401ba6efd0c39e1ba251275de9a9132a583))
+* update readme cover image ([96612c0](https://github.com/SpasMilenkov/Istoria/commit/96612c062d05ac2962f223073659714256e0deb9))
+
 ## [0.5.0](https://github.com/SpasMilenkov/Istoria/compare/v0.2.0...v0.5.0) (2024-08-31)
 
 

@@ -1,4 +1,4 @@
-# ![Istoria](./apps/frontend/public/images/pots.png)
+# ![Istoria](./images/istoria-splash.jpeg)
 
 ## Istoria: A D&D and Utility Discord Bot
 

@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { ArmorModule } from './armor/armor.module';
 import { WeaponModule } from './weapon/weapon.module';
+import { InventoryModule } from './inventory/inventory.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { WeaponModule } from './weapon/weapon.module';
     UserModule,
     ArmorModule,
     WeaponModule,
+    InventoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

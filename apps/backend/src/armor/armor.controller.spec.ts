@@ -55,6 +55,7 @@ describe('ArmorController', () => {
         id: '12345678-1234-1234-1234-123456789012',
         ...createArmorDto,
         itemId: '87654321-4321-4321-4321-210987654321',
+        armorPiece: 'CHESTPLATE',
       };
 
       jest.spyOn(service, 'create').mockResolvedValue(expectedResult);
@@ -81,6 +82,7 @@ describe('ArmorController', () => {
           armorSetId: '00000000-0000-0000-0000-000000000001',
           itemId: '87654321-4321-4321-4321-210987654321',
           durability: 22,
+          armorPiece: 'CHESTPLATE',
         },
         {
           id: '23456789-2345-2345-2345-234567890123',
@@ -96,6 +98,7 @@ describe('ArmorController', () => {
           armorSetId: '00000000-0000-0000-0000-000000000002',
           itemId: '76543210-3210-3210-3210-109876543210',
           durability: 22,
+          armorPiece: 'GREAVES',
         },
       ];
 
@@ -122,6 +125,7 @@ describe('ArmorController', () => {
         armorSetId: '00000000-0000-0000-0000-000000000000',
         itemId: '87654321-4321-4321-4321-210987654321',
         durability: 22,
+        armorPiece: 'CHESTPLATE',
       };
 
       jest.spyOn(service, 'findOne').mockResolvedValue(expectedResult);
@@ -129,9 +133,9 @@ describe('ArmorController', () => {
       expect(
         await controller.findOne('12345678-1234-1234-1234-123456789012')
       ).toBe(expectedResult);
-      expect(service.findOne).toHaveBeenCalledWith(
-        '12345678-1234-1234-1234-123456789012'
-      );
+      expect(service.findOne).toHaveBeenCalledWith({
+        id: '12345678-1234-1234-1234-123456789012',
+      });
     });
   });
 
@@ -156,6 +160,7 @@ describe('ArmorController', () => {
         armorSetId: '00000000-0000-0000-0000-000000000000',
         itemId: '87654321-4321-4321-4321-210987654321',
         durability: 22,
+        armorPiece: 'CHESTPLATE',
       };
 
       jest.spyOn(service, 'update').mockResolvedValue(expectedResult);

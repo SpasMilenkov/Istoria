@@ -367,7 +367,6 @@ export class InventoryService {
           id: weaponId,
           prisma: client,
         });
-        console.log(weapon);
         if (!weapon) throw new WeaponNotFoundException('Weapon not found');
 
         if (
@@ -454,16 +453,13 @@ export class InventoryService {
           throw new WeaponNotEquippedException(weaponId);
         }
 
-        // Delete the EquippedWeapon entry
-        await client.equippedWeapon.delete({
-          where: { id: equippedWeapon.id },
-        });
-
         // Update the Inventory
         const updatedInventory = await client.inventory.update({
           where: { id: inventory.id },
           data: {
-            equippedWeaponId: null,
+            equippedWeapon: {
+              delete: true,
+            },
           },
           include: {
             equippedWeapon: true,

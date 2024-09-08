@@ -59,8 +59,16 @@ enum Weight {
   SUPER_HEAVY
 }
 
+enum ArmorPiece {
+  HELMET
+  CHESTPLATE
+  GREAVES
+  BOOTS
+  ROBE
+}
+
 model Item {
-  id            String      @id @default(uuid())
+  id            String          @id @default(uuid())
   name          String
   attributes    Attribute[]
   rarity        Rarity
@@ -69,35 +77,39 @@ model Item {
   agility       Int
   requiredLevel Int
   origin        String
-  creator       Character?  @relation(fields: [creatorId], references: [id])
-  creatorId     String?     @unique
+  creator       Character?      @relation(fields: [creatorId], references: [id])
+  creatorId     String?         @unique
   weight        Weight
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
   durability    Int
   // Discriminator field to distinguish between Armor and Weapon
-  type   String
-  Weapon Weapon[]
-  Armor  Armor[]
+  type          String
+  Weapon        Weapon[]
+  Armor         Armor[]
+  InventoryItem InventoryItem[]
 }
 
 model Weapon {
-  id          String     @id @default(uuid())
-  baseAttack  Int
-  // Relation to the shared fields in Item
-  item        Item       @relation(fields: [id], references: [id])
-  Character   Character? @relation(fields: [characterId], references: [id])
-  characterId String?
+  id             String           @id @default(uuid())
+  baseAttack     Int
+  item           Item             @relation(fields: [id], references: [id])
+  Character      Character?       @relation(fields: [characterId], references: [id])
+  characterId    String?
+  EquippedWeapon EquippedWeapon[]
+  inventoryId    String?
 }
 
 model Armor {
-  id          String     @id @default(uuid())
+  id          String      @id @default(uuid())
   armorSetId  String
-  ArmorSet    ArmorSet   @relation(fields: [armorSetId], references: [id])
+  ArmorSet    ArmorSet    @relation(fields: [armorSetId], references: [id])
   // Relation to the shared fields in Item
-  item        Item       @relation(fields: [id], references: [id])
-  Character   Character? @relation(fields: [characterId], references: [id])
+  item        Item        @relation(fields: [id], references: [id])
+  Character   Character?  @relation(fields: [characterId], references: [id])
   characterId String?
+  Inventory   Inventory[]
+  armorPiece  ArmorPiece
 }
 
 model ArmorSet {
@@ -208,12 +220,29 @@ model Trait {
 }
 
 model Inventory {
-  id               String     @id @default(uuid())
-  equippedWeapon   Json
-  equippedArmor    Json
-  equippedTrinkets Json
-  inventoryItems   Json
+  id               String          @id @default(uuid())
+  equippedWeapon   EquippedWeapon?
+  equippedArmor    Armor[]
   character        Character?
+  items            InventoryItem[]
+  capacity         Int
+}
+
+model EquippedWeapon {
+  id          String    @id @default(uuid())
+  weapon      Weapon    @relation(fields: [weaponId], references: [id])
+  weaponId    String
+  inventory   Inventory @relation(fields: [inventoryId], references: [id])
+  inventoryId String    @unique
+}
+
+model InventoryItem {
+  id          String     @id @default(uuid())
+  item        Item       @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId      String
+  quantity    Int
+  inventory   Inventory? @relation(fields: [inventoryId], references: [id])
+  inventoryId String?
 }
 
 model CharacterTrait {
